@@ -1,0 +1,14 @@
+version: '3.5'
+services:
+  test:
+    image: kallithea-test-env
+    build:
+      context: ./build
+      args:
+        - KALLITHEA_REV=default
+    network_mode: "none"
+    volumes:
+      - ./custom:/work/custom
+    environment:
+      - KALLITHEA_PATCH_DIR=/work/custom/patches
+      - KALLITHEA_OVERRIDE_DIR=/work/custom/overrides
